@@ -1,5 +1,5 @@
 {
-    "baseUrl": "https://google.com",
+    "baseUrl": "http://automationpractice.com/index.php",
     "testFiles": "**/*.feature",
     "reporter": "cypress-multi-reporters",
     "reporterOptions": {
