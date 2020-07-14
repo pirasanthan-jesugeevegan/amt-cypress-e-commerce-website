@@ -1,0 +1,4 @@
+{
+    "baseUrl": "https://google.com",
+    "testFiles": "**/*.feature"
+}
