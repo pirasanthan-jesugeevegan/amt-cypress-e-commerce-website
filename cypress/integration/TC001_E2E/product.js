@@ -60,6 +60,8 @@ Then('the user should see selected item {string}', (content) => {
     cy
         .get('.cart_description')
         .should('contain.text', content)
+        .get('.cart_navigation > .button > span')
+        .click()
 
 });
 
