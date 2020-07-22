@@ -1,5 +1,5 @@
 # Cypress - Buy-Product-E-commerce
-This repo is a Cypress.io with Cucumber rest script with three Test Cases, to test a E-commerce website
+This repo is a Cypress.io with Cucumber test script with three Test Cases, to test a E-commerce website
 ## Test Case:
 **Test Case 1 - Automate End to End Buy Order functionality.**  
 **Steps to Automate:**
