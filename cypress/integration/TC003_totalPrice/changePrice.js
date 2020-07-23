@@ -1,8 +1,6 @@
 
 Then('the user should see selected item {string}', (content) => {
-    cy
-        .get('.cart_description')
-        .should('contain.text', content)
+    cy.get('.cart_description').should('contain.text', content)
 
 });
 
