@@ -29,7 +29,7 @@ jobs:
           cp -r cypress/videos public/videos
           cp -r cypress/screenshots public/screenshots
       - name: Merge test reports
-        run: npm run combine:report
+        run: npm run combine-reports
       - name: Generate HTML report
         run: npm run generate:report
       - name: Deploy report page to GitHub Page
