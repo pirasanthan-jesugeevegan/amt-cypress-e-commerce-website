@@ -59,4 +59,5 @@ Run test with tags:
 ````
 npm run test -e TAGS='e2e'
 ````
-
+TEST RESULT:
+https://pirasanthan-jesugeevegan.github.io/Buy-Product-E-commerce/
