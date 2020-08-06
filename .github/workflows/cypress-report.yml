@@ -19,20 +19,10 @@ jobs:
         run: |
           npm ci
           $(npm bin)/cypress verify
+          
       - name: Run Cypress tests
-        run: npm run test:chrome
+        run: npm run test
         continue-on-error: true
-
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
-      - name: Merge test reports
-        run: npm run combine:report
-
-      - name: Generate HTML report
-        run: npm run generate:report
       
       - name: Deploy report page to GitHub Page
         uses: peaceiris/actions-gh-pages@v3
