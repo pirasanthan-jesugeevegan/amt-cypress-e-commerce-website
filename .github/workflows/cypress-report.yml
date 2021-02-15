@@ -24,9 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install cypress and verify
-        run: |
-          npm ci
+
+@@ -21,6 +33,13 @@ jobs:
           $(npm bin)/cypress verify
           
       - name: Run Cypress tests
@@ -34,6 +33,24 @@ jobs:
           KNAPSACK_PRO_TEST_SUITE_TOKEN_CYPRESS: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_CYPRESS }}
           KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
           KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
+          # allows rerun parallel jobs with the same set of tests
+          # that were consumed from Queue in the very first CI build run
+          KNAPSACK_PRO_FIXED_QUEUE_SPLIT: true
         run: npm run test:chrome
         continue-on-error: true
-   
+
+      - name: Copy test execution videos and screenshots
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+          cp -r cypress/screenshots public/screenshots
+      - name: Merge test reports
+        run: npm run combine:report
+      - name: Generate HTML report
+        run: npm run generate:report
+      
+      - name: Deploy report page to GitHub Page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
