@@ -24,8 +24,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-@@ -21,6 +33,13 @@ jobs:
           $(npm bin)/cypress verify
           
       - name: Run Cypress tests
