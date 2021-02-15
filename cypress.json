@@ -1,10 +1,11 @@
 {
-    "baseUrl": "http://automationpractice.com/index.php",
-    "testFiles": "**/*.feature",
-    "reporter": "mochawesome",
-    "reporterOptions": {
-        "overwrite": false,
-        "html": false,
-        "json": true
-    }
+  "baseUrl": "http://automationpractice.com/index.php",
+  "testFiles": "**/*.feature",
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "overwrite": false,
+    "html": false,
+    "json": true
+  },
+  "projectId": "1kzdh9"
 }
