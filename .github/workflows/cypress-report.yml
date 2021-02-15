@@ -1,12 +1,10 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-action
-
 name: Generate Cypress Report
 on:
   push:
     branches:
       - 'master'
-
 jobs:
   cypress-test:
     name: Run on Chrome 83
@@ -23,10 +21,9 @@ jobs:
         # set N-1 indexes for parallel jobs
         # When you run 2 parallel jobs then first job will have index 0, the second job will have index 1 etc
         ci_node_index: [0, 1]
-      
+
     steps:
       - uses: actions/checkout@v2
-
       - name: Install cypress and verify
         run: |
           npm ci
@@ -37,5 +34,6 @@ jobs:
           KNAPSACK_PRO_TEST_SUITE_TOKEN_CYPRESS: ${{ secrets.KNAPSACK_PRO_TEST_SUITE_TOKEN_CYPRESS }}
           KNAPSACK_PRO_CI_NODE_TOTAL: ${{ matrix.ci_node_total }}
           KNAPSACK_PRO_CI_NODE_INDEX: ${{ matrix.ci_node_index }}
-        run: |
-          $(npm bin)/knapsack-pro-cypress
+        run: npm run test:chrome
+        continue-on-error: true
+   
