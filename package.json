@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/pirasanthan-jesugeevegan/Buy-Product-E-commerce#readme",
   "dependencies": {
-    "cypress": "^6.4.0"
+    "cypress": "^4.10.0"
   },
   "devDependencies": {
     "@knapsack-pro/cypress": "^4.2.1",
