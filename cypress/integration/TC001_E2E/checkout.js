@@ -15,10 +15,10 @@ Given('the user sets delivery details', (datatable) => {
 
 When('the user make a payment', () => {
     cy.get('[type="checkbox"]').should('not.be.checked').check().should('be.checked')
-    cy.get('button[name="processCarrier"]').click()
-    cy.get('.bankwire').click()
+    cy.get('button[name="processCarrier"]').should('be.visible').click()
+    cy.get('.bankwire').should('be.visible').click()
     cy.get('.price')
-    cy.get('#cart_navigation > .button > span').click()
+    cy.get('#cart_navigation > .button > span').should('be.visible').click()
 });
 
 Then('the user should complete order', () => {

@@ -13,6 +13,7 @@ When('the user change quanity {string}', (content) => {
         //     cy.writeFile('cypress/fixtures/quantityOld.json', { quantityOld: actualPrice })
         // })
         .get('.cart_quantity_input')
+        .should('be.visible')
         .clear()
         //.get('.cart_quantity_input')
         .type(content)
@@ -30,7 +31,7 @@ Then('the price should match', () => {
     cy.get('.cart_quantity_input').invoke('val').then(quanity => {
         const productPrice = 16.51
         const totalPrice = quanity * productPrice
-        cy.get('#total_product_price_1_4_346905').should('contain.text', totalPrice)
+        cy.get('#total_product').should('contain.text', totalPrice)
 
     })
     cy.clearCookies()

@@ -2,7 +2,7 @@
 
 Given('the user selects a {string} tshirt', (content) => {
 
-    cy.get('a[title="Women"]').click()
+    cy.get('a[title="Women"]').should('be.visible').click()
     cy.get('.block_content > .tree > :nth-child(1) > .grower').should('be.visible').click()
     cy.get('.block_content > .tree > :nth-child(1) > ul > :nth-child(1) > a').click()
     cy.get('.ajax_block_product').should('contain.text', content)
