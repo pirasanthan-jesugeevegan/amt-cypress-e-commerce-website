@@ -12,12 +12,14 @@ jobs:
     container: cypress/browsers:node12.18.0-chrome83-ff77
     steps:
       - uses: actions/checkout@v2
+      - name: Install cypress and verify
+        run: |
+          npm ci
           $(npm bin)/cypress verify
           
       - name: Run Cypress tests
         run: npm run test:chrome
         continue-on-error: true
-
       - name: Copy test execution videos and screenshots
         run: |
           mkdir public
