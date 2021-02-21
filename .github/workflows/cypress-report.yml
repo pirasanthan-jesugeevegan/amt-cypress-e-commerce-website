@@ -2,6 +2,8 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-action
 name: Generate Cypress Report
 on:
+  schedule:
+   - cron: "0 0 * * *"
   push:
     branches:
       - 'master'
