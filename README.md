@@ -76,7 +76,7 @@ yarn || npm test:chrome
 ```
 
 ## DEMO
-[Live report - Schedule to run everyday ](https://pirasanthan-jesugeevegan.github.io/amt-cypress-weatherAPI/)
+[Live report - Schedule to run everyday ](https://pirasanthan-jesugeevegan.github.io/amt-cypress-e-commerce-website/)
 
 ## Technology used:
 
