@@ -1,5 +1,15 @@
-# Cypress - Buy-Product-E-commerce
-This repo is a Cypress.io with Cucumber test script with three Test Cases, to test a E-commerce website
+
+<h1 align="center">Buy Product E-commerce </h1>
+ <p align="center">
+ <img height="50px" src="https://miro.medium.com/max/7200/1*Jkb_tsMBOvL6wQ8bzldu8Q.png" />
+  <img height="50px" src="http://assets.stickpng.com/images/58480ffbcef1014c0b5e4947.png" /> 
+  <img height="70px" src="https://blog.knoldus.com/wp-content/uploads/2020/04/Blog9_featureImage.png" />
+  
+ </p>
+
+This is a task to Automate [http://automationpractice.com/index.php](http://automationpractice.com/index.php) website using Cypress and Cucumber with Mochawesome report, Please see below for the Test Case that are automated 
+
+
 ## Test Case:
 **Test Case 1 - Automate End to End Buy Order functionality.**  
 **Steps to Automate:**
@@ -45,19 +55,32 @@ This repo is a Cypress.io with Cucumber test script with three Test Cases, to te
 11. Click 'Proceed to checkout' button.
 12. Change the quantity to 2.
 13. Verify that Total price is changing and reflecting correct price.
-## Install
-1. Clone the repo 
-2. ````npm install````
+Note - These are one of the few to be automated
 
-##  Run tests
-Run all test: 
-````
-npm run test
-````
-Run test with tags:
-**Tags** - @e2e @TC001 @TC002 @TC003
-````
-npm run test -e TAGS='e2e'
-````
-TEST RESULT:
-https://pirasanthan-jesugeevegan.github.io/amt-cypres-E-commerce-website/
+## Install
+
+1.  Clone the repo
+2.  `npm install` or 	`yarn install`
+
+
+## Run tests
+**CLI** - Run CLI
+
+ 
+```
+npx cypress run
+```
+**Cypress UI** - Run on Cypress UI
+ 
+```
+yarn || npm test:chrome
+```
+
+## DEMO
+[Live report - Schedule to run everyday ](https://pirasanthan-jesugeevegan.github.io/amt-cypress-weatherAPI/)
+
+## Technology used:
+
+ - Cypress 
+ - Cucumber
+ - Mochawsome
