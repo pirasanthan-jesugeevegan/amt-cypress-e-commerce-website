@@ -2,9 +2,8 @@
 <h1 align="center">Buy Product E-commerce </h1>
  <p align="center">
  <img height="50px" src="https://miro.medium.com/max/7200/1*Jkb_tsMBOvL6wQ8bzldu8Q.png" />
-  <img height="50px" src="http://assets.stickpng.com/images/58480ffbcef1014c0b5e4947.png" /> 
-  <img height="70px" src="https://blog.knoldus.com/wp-content/uploads/2020/04/Blog9_featureImage.png" />
-  
+  <img height="50px" src="https://cdn.iconscout.com/icon/free/png-256/mocha-1-1175012.png" /> 
+  <img height="50px" src="https://brandslogos.com/wp-content/uploads/thumbs/cucumber-logo-vector.svg" />
  </p>
 
 This is a task to Automate [http://automationpractice.com/index.php](http://automationpractice.com/index.php) website using Cypress and Cucumber with Mochawesome report, Please see below for the Test Case that are automated 
