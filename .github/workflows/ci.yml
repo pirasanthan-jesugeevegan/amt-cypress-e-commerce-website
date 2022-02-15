@@ -3,6 +3,11 @@ on: [pull_request]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        env: ['prod','stage']
+        
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
@@ -36,6 +41,7 @@ jobs:
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
+            echo ${{ matrix.env }}
             npx cypress run --group "Changed specs" --ci-build-id ${{ github.sha }} --spec $CHANGED_SPECS
           fi
       # run all tests to be sure
