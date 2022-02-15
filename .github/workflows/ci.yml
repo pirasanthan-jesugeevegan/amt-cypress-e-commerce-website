@@ -4,6 +4,9 @@ jobs:
   cypress-test:
     name: Run on Chrome 83
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        env: ['prod','stage']
     container: cypress/browsers:node12.18.0-chrome83-ff77
     steps:
       - uses: actions/checkout@v2
@@ -35,6 +38,6 @@ jobs:
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
-            npx cypress run --spec $CHANGED_SPECS
+            CYPRESS_username=test111@test111.com CYPRESS_password=test111 npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
           fi
    
