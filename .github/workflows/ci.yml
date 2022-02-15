@@ -1,18 +1,17 @@
 name: ci
 on: [pull_request]
 jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        env: ['prod','stage']
-        
+  cypress-test:
+    name: Run on Chrome 83
+    runs-on: ubuntu-18.04
+    container: cypress/browsers:node12.18.0-chrome83-ff77
     steps:
-      - name: Checkout 🛎
-        uses: actions/checkout@v2
-
-      # - run: git ls-remote
+      - uses: actions/checkout@v2
+      - name: Install cypress and verify
+        run: |
+          npm ci
+          $(npm bin)/cypress verify
+          
       - name: Checkout head and target branches 👯‍♂️
         run: |
           git fetch --no-tags --depth=1 origin ${{ github.base_ref }}
@@ -29,10 +28,6 @@ jobs:
         # use "-- <folder path>" to limit changed files to specific subfolder
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration
 
-      - name: Install cypress and verify
-        run: |
-          npm install
-
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
         run: |
@@ -40,7 +35,6 @@ jobs:
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
-            echo ${{ matrix.env }}
             npx cypress run --group "Changed specs" --ci-build-id ${{ github.sha }} --spec $CHANGED_SPECS
           fi
       # run all tests to be sure
