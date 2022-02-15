@@ -31,8 +31,7 @@ jobs:
 
       - name: Install cypress and verify
         run: |
-          npm ci
-          $(npm bin)/cypress verify
+          npm install
 
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
