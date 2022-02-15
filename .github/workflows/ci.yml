@@ -37,15 +37,4 @@ jobs:
             echo $CHANGED_SPECS
             npx cypress run --spec $CHANGED_SPECS
           fi
-      # run all tests to be sure
-      - name: Run all Cypress tests 🧪
-        uses: cypress-io/github-action@v1
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-        with:
-          # we have already installed all dependencies above
-          install: false
-          record: true
-          group: All specs
-          ci-build-id: ${{ github.sha }}
+   
