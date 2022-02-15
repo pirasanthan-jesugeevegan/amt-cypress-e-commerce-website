@@ -30,9 +30,9 @@ jobs:
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration
 
       - name: Install Cypress and dependencies 📦
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
+        run: |
+          npm ci
+          $(npm bin)/cypress verify
 
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
