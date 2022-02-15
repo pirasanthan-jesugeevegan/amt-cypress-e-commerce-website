@@ -27,7 +27,7 @@ Feature: Automate End to End Buy Order functionality.
             | product                     | quantity | size | color |
             | Faded Short Sleeve T-shirts | 2        | M    | blue  |
 
-    @e2e
+    @e2e @test
     Scenario: Checkout with payment
         Given the user sets delivery details
             | name       | postCode |
