@@ -30,7 +30,7 @@ jobs:
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration
 
       - name: Install Cypress and dependencies 📦
-        uses: cypress-io/github-action@v1
+        uses: cypress-io/github-action@v2
         with:
           runTests: false
 
