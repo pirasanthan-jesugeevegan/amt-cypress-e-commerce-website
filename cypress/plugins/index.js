@@ -12,8 +12,27 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-const cucumber = require('cypress-cucumber-preprocessor').default
+const cucumber = require('cypress-cucumber-preprocessor').default;
+
+// promisified fs module
+const fs = require('fs-extra');
+const path = require('path');
+
+logPath = process.env.LOG_DIR || path.join(__dirname, '..', 'log');
+
+function getConfigurationByFile(file) {
+  const pathToConfigFile = path.resolve('.', 'config', `${file}.json`);
+
+  return fs.readJson(pathToConfigFile);
+}
 
 module.exports = (on, config) => {
-  on('file:preprocessor', cucumber())
-}
+  on('file:preprocessor', cucumber());
+
+  config.env.username = process.env.USERNAME;
+  config.env.password = process.env.PASSWORD;
+  // accept a configFile value or use qa by default
+  const file = config.env.configFile || 'prod';
+
+  return getConfigurationByFile(file);
+};

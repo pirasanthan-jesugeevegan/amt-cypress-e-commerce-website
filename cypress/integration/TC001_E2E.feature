@@ -11,8 +11,8 @@ Feature: Automate End to End Buy Order functionality.
     Scenario: Login
         Given the user open login page
         When the user type in
-            | username            | password |
-            | test111@test111.com | test111  |
+            | username | password |
+            | username | password |
         And the user clicks on Sign in button
         Then "John Smith" should be shown
     @e2e
