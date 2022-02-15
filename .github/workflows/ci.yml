@@ -31,15 +31,12 @@ jobs:
 
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
-        env:
-          # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         run: |
           CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
-            npx cypress run --record --group "Changed specs" --ci-build-id ${{ github.sha }} --spec $CHANGED_SPECS
+            npx cypress run --group "Changed specs" --ci-build-id ${{ github.sha }} --spec $CHANGED_SPECS
           fi
       # run all tests to be sure
       - name: Run all Cypress tests 🧪
