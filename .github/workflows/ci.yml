@@ -32,10 +32,11 @@ jobs:
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
         run: |
-          CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration/*.feature)
+          CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
             npx cypress run --spec $CHANGED_SPECS
-            CYPRESS_username={{ secrets.USERNAME }} CYPRESS_password={{ secrets.PASSWORD }} npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
+            CYPRESS_username=test111@test111.com CYPRESS_password=test111 npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
           fi
+   
