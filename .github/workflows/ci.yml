@@ -32,7 +32,7 @@ jobs:
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
         run: |
-          CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
+          CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration/*.feature)
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
