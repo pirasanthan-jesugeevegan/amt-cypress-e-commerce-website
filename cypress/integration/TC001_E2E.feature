@@ -7,7 +7,7 @@ Feature: Automate End to End Buy Order functionality.
     I want to complete payment
 
 
-    @e2e
+    @e2e @test
     Scenario: Login
         Given the user open login page
         When the user type in
