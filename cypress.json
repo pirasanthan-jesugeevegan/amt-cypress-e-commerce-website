@@ -1,6 +1,7 @@
 {
   "baseUrl": "http://automationpractice.com/index.php",
   "testFiles": "**/*.feature",
+  "pageLoadTimeout": 120000,
   "reporter": "mochawesome",
   "reporterOptions": {
     "overwrite": false,
