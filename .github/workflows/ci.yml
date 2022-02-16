@@ -2,6 +2,7 @@ name: ci
 on: [pull_request]
 jobs:
   cypress-test:
+    name: Run on Chrome 83
     runs-on: ubuntu-18.04
     strategy:
       matrix:
@@ -25,21 +26,16 @@ jobs:
           git checkout ${{ github.sha }}
       - name: All changed files 🗂
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }}
-
       - name: Just changed Cypress specs 🗂
         # use "-- <folder path>" to limit changed files to specific subfolder
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration
-
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
-#         env:
-#           CYPRESS_username: ${{ secrets.CYPRESS_username}}
-#           CYPRESS_password: ${{ secrets.CYPRESS_password }}
         run: |
           CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
-            CYPRESS_username: ${{ secrets.CYPRESS_username}} CYPRESS_password: ${{ secrets.CYPRESS_password }} npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
+            npx cypress run --spec $CHANGED_SPECS
+            CYPRESS_username=test111@test111.com CYPRESS_password=test111 npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
           fi
-   
