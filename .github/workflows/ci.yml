@@ -2,7 +2,7 @@ name: ci
 on: [pull_request]
 jobs:
   cypress-test:
-    name: Run on Chrome 83
+    name: Run test on - 
     runs-on: ubuntu-18.04
     strategy:
       matrix:
