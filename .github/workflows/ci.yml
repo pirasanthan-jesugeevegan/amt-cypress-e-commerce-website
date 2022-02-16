@@ -34,7 +34,7 @@ jobs:
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
         env:
-          CYPRESS_username=: ${{ secrets.CYPRESS_username}}
+          CYPRESS_username: ${{ secrets.CYPRESS_username}}
           CYPRESS_password: ${{ secrets.CYPRESS_password }}
         run: |
           CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
