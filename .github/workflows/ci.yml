@@ -26,17 +26,20 @@ jobs:
           git checkout ${{ github.sha }}
       - name: All changed files 🗂
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }}
+
       - name: Just changed Cypress specs 🗂
         # use "-- <folder path>" to limit changed files to specific subfolder
         run: git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration
+
       # quickly run just the changed specs to fail fast
       - name: Maybe run just the changed Cypress tests ⏱
+        env:
+          CYPRESS_username=: ${{ secrets.CYPRESS_username}}
+          CYPRESS_password: ${{ secrets.CYPRESS_password }}
         run: |
           CHANGED_SPECS=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- cypress/integration)
           if [ -n "$CHANGED_SPECS" ]; then
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
-            npx cypress run --spec $CHANGED_SPECS
-            CYPRESS_username=${{secret.USERNAME}} CYPRESS_password=${{secret.PASSWORD}} npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
+            npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
           fi
-   
