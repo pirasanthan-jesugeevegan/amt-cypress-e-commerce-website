@@ -37,6 +37,6 @@ jobs:
             echo "Running the following changed specs"
             echo $CHANGED_SPECS
             npx cypress run --spec $CHANGED_SPECS
-            CYPRESS_username=test111@test111.com CYPRESS_password=test111 npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
+            CYPRESS_username=${{ secret.USERNAME }} CYPRESS_password=${{ secret.PASSWORD }} npx cypress run --headless --browser chrome --env configFile=${{ matrix.env }} --spec $CHANGED_SPECS
           fi
    
